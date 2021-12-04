@@ -32,6 +32,25 @@
   ### 2. 程序的耦合及解耦
   #### 2.1 曾经案例中的问题
   
+    // 1. 注册驱动
+    DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+    // 2. 获取连接
+    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ssm","root","root");
+    // 3. 获取操作数据库的预处理对象
+    PreparedStatement pstm = conn.prepareStatement("select * from user");
+    // 4. 执行SQL，得到结果集
+    ResultSet resultSet = pstm.executeQuery();
+    // 5. 遍历结果集
+    while (resultSet.next()){
+        System.out.println(resultSet.getString("userName"));
+    }
+    // 6. 释放资源
+    resultSet.close();
+    pstm.close();
+    conn.close();
+    
+    // 具体的耦合与内聚的介绍：https://www.cnblogs.com/jiang-bei/articles/15522241.html
+  
   #### 2.2 工厂模式解耦
   ### 3. IOC的概念和spring中的IOC
   #### 3.1spring中基于XML的IOC环境搭建
