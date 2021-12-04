@@ -52,6 +52,14 @@
     // 具体的耦合与内聚的介绍：https://www.cnblogs.com/jiang-bei/articles/15522241.html
   
   #### 2.2 工厂模式解耦
+  
+    // 降低程序间的依赖关系，能够避免的尽量避免。
+    // 实际开发中编译期间不依赖
+    // 1. 通过反射创建类对象，一个依赖的是String，一个是依赖于class，这样就减少了耦合
+    Class.forName("com.mysql.jdbc.Driver"); // 使用这种方式注册驱动的是字符串被固定
+    // 2. 通过读取配置文件方式获取要创建的对象的全限定类名。
+  
+  
   ### 3. IOC的概念和spring中的IOC
   #### 3.1spring中基于XML的IOC环境搭建
   ### 4. 依赖注入（Dependency Injection） 
